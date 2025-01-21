@@ -40,25 +40,26 @@
 -- COMMAND ----------
 
 -- MAGIC %md-sandbox
--- MAGIC # Simplify Ingestion and Transformation with Delta Live Tables
+-- MAGIC # Simplify Ingestion and Transformation with LakeFlow Connect & Delta Live Tables
 -- MAGIC
 -- MAGIC <img style="float: right" width="500px" src="https://github.com/databricks-demos/dbdemos-resources/raw/main/images/retail/lakehouse-churn/lakehouse-retail-c360-churn-1.png" />
 -- MAGIC
 -- MAGIC In this notebook, we'll work as a Data Engineer to build our c360 database. <br>
 -- MAGIC We'll consume and clean our raw data sources to prepare the tables required for our BI & ML workload.
 -- MAGIC
--- MAGIC We have 3 data sources sending new files in our blob storage (`/demos/retail/churn/`) and we want to incrementally load this data into our Data Warehousing tables:
+-- MAGIC We want to ingest the datasets below from Salesforce Sales Cloud and blob storage (`/demos/retail/churn/`) incrementally into our Data Warehousing tables:
 -- MAGIC
 -- MAGIC - Customer profile data *(name, age, address etc)*
 -- MAGIC - Orders history *(what our customer bought over time)*
 -- MAGIC - Streaming Events from our application *(when was the last time customers used the application, typically a stream from a Kafka queue)*
 -- MAGIC
+-- MAGIC Databricks simplifies this task with the help of LakeFlow Connect and Delta Live Table (DLT) by making Data Engineering accessible to all.
 -- MAGIC
--- MAGIC Databricks simplifies this task with Delta Live Table (DLT) by making Data Engineering accessible to all.
+-- MAGIC LakeFlow Connect allows users to ingest data into the Lakehouse while DLT allows Data Analysts to create advanced pipelines with plain SQL.
 -- MAGIC
--- MAGIC DLT allows Data Analysts to create advanced pipelines with plain SQL.
+-- MAGIC ## LakeFlow Connect & Delta Live Tables work together to simplify data ingestion, build and mange data pipeliens! 
 -- MAGIC
--- MAGIC ## Delta Live Table: A simple way to build and manage data pipelines for fresh, high quality data!
+-- MAGIC <!-- ## Delta Live Table: A simple way to build and manage data pipelines for fresh, high quality data! -->
 -- MAGIC
 -- MAGIC <div>
 -- MAGIC   <div style="width: 45%; float: left; margin-bottom: 10px; padding-right: 45px">
@@ -69,7 +70,7 @@
 -- MAGIC     </p>
 -- MAGIC     <p>
 -- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/logo-complexity.png"/> 
--- MAGIC       <strong>Remove operational complexity</strong> <br/>
+-- MAGIC       <strong>Simple and low maintenance</strong> <br/>
 -- MAGIC       By automating complex administrative tasks and gaining broader visibility into pipeline operations
 -- MAGIC     </p>
 -- MAGIC   </div>
@@ -102,9 +103,9 @@
 -- MAGIC %md 
 -- MAGIC ## Building a Delta Live Table pipeline to analyze and reduce churn
 -- MAGIC
--- MAGIC In this example, we'll implement a end-to-end DLT pipeline consuming our customers information. We'll use the medallion architecture but we could build star schema, data vault or any other modelisation.
+-- MAGIC In this example, we'll implement a end-to-end DLT pipeline consuming our customers information with LakeFlow Connect. We'll use the medallion architecture but we could build star schema, data vault or any other modelisation.
 -- MAGIC
--- MAGIC We'll incrementally load new data with the autoloader, enrich this information and then load a model from MLFlow to perform our customer churn prediction.
+-- MAGIC We'll incrementally load new data with the LakeFlow Salesforce connector, enrich this information and then load a model from MLFlow to perform our customer churn prediction.
 -- MAGIC
 -- MAGIC This information will then be used to build our DBSQL dashboard to track customer behavior and churn.
 -- MAGIC
