@@ -70,11 +70,11 @@
 -- MAGIC %md-sandbox
 -- MAGIC ## 1/ Ingesting and preparing the data (Data Engineering)
 -- MAGIC
--- MAGIC <img style="float: left; margin-right: 20px" width="400px" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-2.png" />
+-- MAGIC <img style="float: left; margin-right: 20px" width="500px" src="https://raw.githubusercontent.com/databricks-demos/dbdemos-resources/refs/heads/main/images/manufacturing/lakehouse-iot-turbine/di_platform_2.png" />
 -- MAGIC
 -- MAGIC
 -- MAGIC <br/>
--- MAGIC <div style="padding-left: 420px">
+-- MAGIC <div style="padding-left: 520px">
 -- MAGIC Our first step is to ingest and clean the raw data we received so that our Data Analyst team can start running analysis on top of it.
 -- MAGIC
 -- MAGIC
@@ -102,10 +102,10 @@
 -- MAGIC %md-sandbox
 -- MAGIC ## 2/ Securing data & governance (Unity Catalog)
 -- MAGIC
--- MAGIC <img style="float: left" width="400px" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-6.png" />
+-- MAGIC <img style="float: left" width="500px" src="https://raw.githubusercontent.com/databricks-demos/dbdemos-resources/refs/heads/main/images/manufacturing/lakehouse-iot-turbine/di_platform_2.png" />
 -- MAGIC
 -- MAGIC <br/><br/><br/>
--- MAGIC <div style="padding-left: 420px">
+-- MAGIC <div style="padding-left: 520px">
 -- MAGIC   Now that our first tables have been created, we need to grant our Data Analyst team READ access to be able to start alayzing our Customer churn information.
 -- MAGIC   
 -- MAGIC   Let's see how Unity Catalog provides Security & governance across our data assets with, including data lineage and audit log.
@@ -128,7 +128,7 @@
 -- MAGIC
 -- MAGIC
 -- MAGIC
--- MAGIC <img width="400px" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-3.png"  style="float: left; margin-right: 10px"/>
+-- MAGIC <img width="500px" src="https://raw.githubusercontent.com/databricks-demos/dbdemos-resources/refs/heads/main/images/manufacturing/lakehouse-iot-turbine/di_platform_2.png"  style="float: left; margin-right: 10px"/>
 -- MAGIC  
 -- MAGIC <br><br><br>
 -- MAGIC Our datasets are now properly ingested, secured, with a high quality and easily discoverable within our organization.
@@ -147,7 +147,7 @@
 -- MAGIC %md-sandbox
 -- MAGIC ## 4/ Predict churn with Data Science & Auto-ML
 -- MAGIC
--- MAGIC <img width="400px" style="float: left; margin-right: 10px" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-4.png" />
+-- MAGIC <img width="500px" style="float: left; margin-right: 10px" src="https://raw.githubusercontent.com/databricks-demos/dbdemos-resources/refs/heads/main/images/manufacturing/lakehouse-iot-turbine/di_platform_2.png" />
 -- MAGIC
 -- MAGIC <br><br><br>
 -- MAGIC Being able to run analysis on our past data already gave us a lot of insight to drive our business. We can better understand which customers are churning to evaluate the impact of churn.
@@ -203,7 +203,7 @@
 -- MAGIC %md-sandbox
 -- MAGIC ## 5/ Deploying and orchestrating the full workflow
 -- MAGIC
--- MAGIC <img style="float: left; margin-right: 10px" width="400px" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-5.png" />
+-- MAGIC <img style="float: left; margin-right: 10px" width="500px" src="https://raw.githubusercontent.com/databricks-demos/dbdemos-resources/refs/heads/main/images/manufacturing/lakehouse-iot-turbine/di_platform_2.png" />
 -- MAGIC
 -- MAGIC <br><br><br>
 -- MAGIC While our data pipeline is almost completed, we're missing one last step: orchestrating the full workflow in production.

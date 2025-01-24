@@ -53,24 +53,20 @@
 -- MAGIC - Orders history *(what our customer bought over time)*
 -- MAGIC - Streaming Events from our application *(when was the last time customers used the application, typically a stream from a Kafka queue)*
 -- MAGIC
--- MAGIC Databricks simplifies this task with the help of LakeFlow Connect and Delta Live Table (DLT) by making Data Engineering accessible to all.
--- MAGIC
--- MAGIC LakeFlow Connect allows users to ingest data into the Lakehouse while DLT allows Data Analysts to create advanced pipelines with plain SQL.
--- MAGIC
--- MAGIC ## LakeFlow Connect & Delta Live Tables work together to simplify data ingestion, build and mange data pipeliens! 
+-- MAGIC ## LakeFlow Connect & Delta Live Tables work together to simplify data ingestion, build and mange data pipelines! 
 -- MAGIC
 -- MAGIC <!-- ## Delta Live Table: A simple way to build and manage data pipelines for fresh, high quality data! -->
 -- MAGIC
 -- MAGIC <div>
 -- MAGIC   <div style="width: 45%; float: left; margin-bottom: 10px; padding-right: 45px">
 -- MAGIC     <p>
--- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/logo-accelerate.png"/> 
--- MAGIC       <strong>Accelerate ETL development</strong> <br/>
+-- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/diganparikh-dp/Images/refs/heads/main/Icons/LakeFlow%20Connect.jpg"/> 
+-- MAGIC       <strong>Efficient end-to-end ingestion</strong> <br/>
 -- MAGIC       Enable analysts and data engineers to innovate rapidly with simple pipeline development and maintenance 
 -- MAGIC     </p>
 -- MAGIC     <p>
--- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/logo-complexity.png"/> 
--- MAGIC       <strong>Simple and low maintenance</strong> <br/>
+-- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/diganparikh-dp/Images/refs/heads/main/Icons/LakeFlow%20Pipelines.jpg"/> 
+-- MAGIC       <strong>Flexible and easy setup</strong> <br/>
 -- MAGIC       By automating complex administrative tasks and gaining broader visibility into pipeline operations
 -- MAGIC     </p>
 -- MAGIC   </div>
@@ -78,7 +74,7 @@
 -- MAGIC     <p>
 -- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/logo-trust.png"/> 
 -- MAGIC       <strong>Trust your data</strong> <br/>
--- MAGIC       With built-in quality controls and quality monitoring to ensure accurate and useful BI, Data Science, and ML 
+-- MAGIC       With built-in orchestration, quality controls and quality monitoring to ensure accurate and useful BI, Data Science, and ML 
 -- MAGIC     </p>
 -- MAGIC     <p>
 -- MAGIC       <img style="width: 50px; float: left; margin: 0px 5px 30px 0px;" src="https://raw.githubusercontent.com/QuentinAmbard/databricks-demo/main/retail/resources/images/lakehouse-retail/logo-stream.png"/> 
@@ -90,13 +86,16 @@
 -- MAGIC
 -- MAGIC <br style="clear:both">
 -- MAGIC
--- MAGIC <img src="https://pages.databricks.com/rs/094-YMS-629/images/delta-lake-logo.png" style="float: right;" width="200px">
+-- MAGIC <img src="https://raw.githubusercontent.com/diganparikh-dp/Images/refs/heads/main/Icons/LakeFlow.jpg" style="float: right;" width="200px">
 -- MAGIC
--- MAGIC ## Delta Lake
+-- MAGIC ## LakeFlow
 -- MAGIC
--- MAGIC All the tables we'll create in the Lakehouse will be stored as Delta Lake tables. Delta Lake is an open storage framework for reliability and performance.<br>
--- MAGIC It provides many functionalities (ACID Transaction, DELETE/UPDATE/MERGE, Clone zero copy, Change data Capture...)<br>
--- MAGIC For more details on Delta Lake, run dbdemos.install('delta-lake')
+-- MAGIC LakeFlow is unified data engineering for the Data Intelligence Platform. LakeFlow is an end-to-end solution to ingest data from any source with <u>LakeFlow Connect</u>, transform your data with <u>LakeFlow</u> Pipelines, and orchestrate workflows with <u>LakeFlow Jobs</u>. Soon, you will see the <u>LakeFlow Connect</u> in action to to accelerate time to insights with the Data Intelligence Platform. 
+-- MAGIC
+-- MAGIC **INSERT GIF HERE**
+-- MAGIC
+-- MAGIC **HOW TO ADD LINK THAT LEADS TO THE INGESTION IN THE DATABRICKS WORKSPACE**
+-- MAGIC
 
 -- COMMAND ----------
 
@@ -105,13 +104,13 @@
 -- MAGIC
 -- MAGIC In this example, we'll implement a end-to-end DLT pipeline consuming our customers information with LakeFlow Connect. We'll use the medallion architecture but we could build star schema, data vault or any other modelisation.
 -- MAGIC
--- MAGIC We'll incrementally load new data with the LakeFlow Salesforce connector, enrich this information and then load a model from MLFlow to perform our customer churn prediction.
+-- MAGIC We'll incrementally load new data with the LakeFlow ingestion connectors, enrich this information and then load a model from MLFlow to perform our customer churn prediction.
 -- MAGIC
 -- MAGIC This information will then be used to build our DBSQL dashboard to track customer behavior and churn.
 -- MAGIC
 -- MAGIC Let's implement the following flow: 
 -- MAGIC  
--- MAGIC <div><img width="1100px" src="https://github.com/QuentinAmbard/databricks-demo/raw/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-de.png"/></div>
+-- MAGIC <div><img width="1100px" src="https://raw.githubusercontent.com/diganparikh-dp/Images/refs/heads/main/Icons/End%20to%20End.png"/></div>
 -- MAGIC
 -- MAGIC *Note that we're including the ML model our [Data Scientist built]($../04-Data-Science-ML/04.1-automl-churn-prediction) using Databricks AutoML to predict the churn. We'll cover that in the next section.*
 
@@ -144,12 +143,12 @@
 -- MAGIC %md-sandbox
 -- MAGIC ### 1/ Loading our data using Databricks Autoloader (cloud_files)
 -- MAGIC <div style="float:right">
--- MAGIC   <img width="500px" src="https://github.com/QuentinAmbard/databricks-demo/raw/main/retail/resources/images/lakehouse-retail/lakehouse-retail-churn-de-small-1.png"/>
+-- MAGIC   <img width="500px" src="https://raw.githubusercontent.com/diganparikh-dp/Images/refs/heads/main/Icons/End%20to%20End%20Simple%202.png"/>
 -- MAGIC </div>
 -- MAGIC   
--- MAGIC Autoloader allow us to efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale.
+-- MAGIC Since the connectors are specific to everyone's environment, we will replicate the ingestion with Databricks Autoloader. If you are interested in replacing the ingestion with the LakeFlow Connectors, please [set up](https://docs.databricks.com/en/ingestion/lakeflow-connect/index.html) the appropriate connectors. 
 -- MAGIC
--- MAGIC For more details on autoloader, run `dbdemos.install('auto-loader')`
+-- MAGIC Autoloader allow us to efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale. For more details on autoloader, run `dbdemos.install('auto-loader')`
 -- MAGIC
 -- MAGIC Let's use it to our pipeline and ingest the raw JSON & CSV data being delivered in our blob storage `/demos/retail/churn/...`. 
 
